@@ -1,9 +1,12 @@
 
 set_headphones_volume_same_as_virtual_cable_volume()
 {
-	master_volume := SoundGetVolume( , "CABLE Input (VB-Audio Virtual Cable)")
-	SoundSetVolume(master_volume, , "Ακουστικά (ZV Headphones Stereo)")
-	SoundSetVolume(master_volume, , "Ακουστικά (Evi Headphones Stereo)")
+	If SoundGetName() == "CABLE Input (VB-Audio Virtual Cable)"
+	{
+		master_volume := SoundGetVolume()
+		SoundSetVolume(master_volume, , "Ακουστικά (ZV Headphones Stereo)")
+		SoundSetVolume(master_volume, , "Ακουστικά (Evi Headphones Stereo)")
+	}
 }
 
 run_audio_repeater_when_headphones_are_connected()
@@ -19,6 +22,7 @@ run_audio_repeater_when_headphones_are_connected()
 		audiorepeater_has_error := WinExist("Error ahk_exe " . audiorepeater_file)
 		if audiorepeater_has_error
 			ProcessClose(WinGetPID("ahk_id " . audiorepeater_has_error))
+		playback_device_is_virtual_cable := SoundGetName() == "CABLE Input (VB-Audio Virtual Cable)"
 		Loop Reg audio_render_registry_key, "K"
 		{
 			if debugging
@@ -30,9 +34,9 @@ run_audio_repeater_when_headphones_are_connected()
 			headphones_name := RegRead(current_registry_key . "\Properties", "{b3f8fa53-0004-438e-9003-51a46e139bfc},6")
 			headphones_are_connected := RegRead(current_registry_key, "DeviceState") == 1
 			audiorepeater_is_running := WinExist(headphones_name . " ahk_exe " . audiorepeater_file)
-			if audiorepeater_is_running and not(headphones_are_connected)
+			if audiorepeater_is_running and not(headphones_are_connected and playback_device_is_virtual_cable)
 				WinClose("ahk_id " . audiorepeater_is_running)
-			if not(headphones_are_connected) or WinExist("Headphones ahk_exe " . audiorepeater_file)
+			if WinExist("Headphones ahk_exe " . audiorepeater_file) or not(headphones_are_connected and playback_device_is_virtual_cable) 
 				continue
 			if debugging
 				MsgBox 'Audio Repeater on "' . headphones_name . '" is not running!  Starting...'
