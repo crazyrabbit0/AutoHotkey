@@ -1,4 +1,5 @@
 #SingleInstance Force
+#Include ".Run as Administrator.ahk"
 
 	debugging := 0
 	run_audio_repeater_when_headphones_are_connected()
@@ -12,12 +13,12 @@
 	>^>!/::Suspend
 	#SuspendExempt False
 	
-	Media_Prev::
+	$Media_Prev::
 	{
 		activate_window_under_mouse()
 		Send "{Left}"
 	}
-	Media_Next::
+	$Media_Next::
 	{
 		activate_window_under_mouse()
 		Send "{Right}"
@@ -56,7 +57,7 @@
 
 	~^s::Reload
 
-#HotIf WinExist("Stremio - Freedom to Stream ahk_exe stremio.exe")
+#HotIf WinExist("Stremio - Freedom to Stream")
 
 	$Media_Play_Pause::
 	{
@@ -65,19 +66,30 @@
 		if double_press
 		{
 			SetTimer(single_press, 0)
-			active_window_id := WinGetID("A")
-			WinActivate("Stremio - Freedom to Stream ahk_exe stremio.exe")
-			Send "{Space}"
-			WinActivate(active_window_id)
+			ControlClick , "Stremio - Freedom to Stream", , "MIDDLE"
+			ControlSend "{Space}", , "Stremio - Freedom to Stream ahk_exe stremio.exe"
 		}
 		
 		single_press()
 		{
-			If WinActive("Stremio - Freedom to Stream ahk_exe stremio.exe")
+			If WinActive("Stremio - Freedom to Stream")
 				Send "{Space}"
 			else
 				Send "{Media_Play_Pause}"
 		}
+	}
+
+#HotIf WinExist("ahk_class PotPlayer64")
+	
+	<+p::
+	{
+		ControlClick , "ahk_class PotPlayer64", , "MIDDLE"
+		ControlSend "{Media_Prev}", , "ahk_class PotPlayer64"
+	}
+	<+n::
+	{
+		ControlClick , "ahk_class PotPlayer64", , "MIDDLE"
+		ControlSend "{Media_Next}", , "ahk_class PotPlayer64"
 	}
 
 #HotIf WinActive("ahk_exe EXCEL.EXE")
