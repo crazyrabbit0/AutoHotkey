@@ -24,6 +24,9 @@
 		Send "{Right}"
 	}
 	
+	^!+p::Send "+p"
+	^!+n::Send "+n"
+	
 	$Volume_Up::
 	{
 		Send "{Volume_Up}"
@@ -81,12 +84,12 @@
 
 #HotIf WinExist("ahk_class PotPlayer64")
 	
-	<+p::
+	^!+p::
 	{
 		ControlClick , "ahk_class PotPlayer64", , "MIDDLE"
 		ControlSend "{Media_Prev}", , "ahk_class PotPlayer64"
 	}
-	<+n::
+	^!+n::
 	{
 		ControlClick , "ahk_class PotPlayer64", , "MIDDLE"
 		ControlSend "{Media_Next}", , "ahk_class PotPlayer64"
