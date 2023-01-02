@@ -4,6 +4,7 @@
 	debugging := 0
 	run_audio_repeater_when_headphones_are_connected()
 	
+	/::/
 	
 	>^/::Reload
 	
@@ -99,9 +100,9 @@
 
 	^+q::
 	{
-		Send "+{F10}n"
+		Send "{Right}+{F10}n"
 		Sleep 100
-		Send "^{Tab}!i{Enter}{Right}"
+		Send "^{Tab}!i{Enter}"
 	}
 	
 	^+w::Send "+{F10}{Down}{Down}{Enter}{Down}"
