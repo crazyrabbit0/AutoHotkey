@@ -1,7 +1,7 @@
 
 set_headphones_volume_same_as_virtual_cable_volume()
 {
-	If SoundGetName() == "CABLE Input (VB-Audio Virtual Cable)"
+	If SoundGetName() == "Hi-Fi Cable Input (VB-Audio Hi-Fi Cable)"
 	{
 		master_volume := SoundGetVolume()
 		SoundSetVolume(master_volume, , "Ακουστικά (ZV Headphones Stereo)")
@@ -22,7 +22,7 @@ run_audio_repeater_when_headphones_are_connected()
 		audiorepeater_has_error := WinExist("Error ahk_exe " . audiorepeater_file)
 		if audiorepeater_has_error
 			ProcessClose(WinGetPID("ahk_id " . audiorepeater_has_error))
-		playback_device_is_virtual_cable := SoundGetName() == "CABLE Input (VB-Audio Virtual Cable)"
+		playback_device_is_hifi_cable := SoundGetName() == "Hi-Fi Cable Input (VB-Audio Hi-Fi Cable)"
 		Loop Reg audio_render_registry_key, "K"
 		{
 			if debugging
@@ -34,13 +34,13 @@ run_audio_repeater_when_headphones_are_connected()
 			headphones_name := RegRead(current_registry_key . "\Properties", "{b3f8fa53-0004-438e-9003-51a46e139bfc},6")
 			headphones_are_connected := RegRead(current_registry_key, "DeviceState") == 1
 			audiorepeater_is_running := WinExist(headphones_name . " ahk_exe " . audiorepeater_file)
-			if audiorepeater_is_running and not(headphones_are_connected and playback_device_is_virtual_cable)
+			if audiorepeater_is_running and not(headphones_are_connected and playback_device_is_hifi_cable)
 				WinClose("ahk_id " . audiorepeater_is_running)
-			if WinExist("Headphones ahk_exe " . audiorepeater_file) or not(headphones_are_connected and playback_device_is_virtual_cable) 
+			if WinExist("Headphones ahk_exe " . audiorepeater_file) or not(headphones_are_connected and playback_device_is_hifi_cable) 
 				continue
 			if debugging
 				MsgBox 'Audio Repeater on "' . headphones_name . '" is not running!  Starting...'
-			Run('"' . audiorepeater_path . '" /Input:"VB-Audio Point" /Output:"' . headphones_name . '" /OutputPrefill:70 /SamplingRate:44100 /Priority:"High" /WindowName:"' . headphones_name . '" /AutoStart', , "Hide")
+			Run('"' . audiorepeater_path . '" /Input:"VB-Audio Hi-Fi Cable" /Output:"' . headphones_name . '" /OutputPrefill:70 /SamplingRate:44100 /Priority:"High" /WindowName:"' . headphones_name . '" /AutoStart', , "Hide")
 			set_headphones_volume_same_as_virtual_cable_volume()
 		}
 	}
