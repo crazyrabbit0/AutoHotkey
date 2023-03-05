@@ -1,5 +1,5 @@
 #SingleInstance Force
-#Include ".Run as Administrator.ahk"
+#Include "Run as Administrator.ahk"
 
 	debugging := 0
 	;run_audio_repeater_when_headphones_are_connected()
@@ -110,7 +110,7 @@
 
 ;------------------------------ Functions ------------------------------
 
-#Include ".Headphones Functions.ahk"
+#Include "Headphone Functions.ahk"
 
 activate_window_under_mouse()
 {
