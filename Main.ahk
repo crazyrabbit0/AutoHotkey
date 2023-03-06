@@ -25,8 +25,8 @@
 		Send "{Right}"
 	}
 	
-	^!+p::Send "+p"
-	^!+n::Send "+n"
+	^!+p::Send "{Shift down}p{Shift up}"
+	^!+n::Send "{Shift down}n{Shift up}"
 	
 	$Volume_Up::
 	{
