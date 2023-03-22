@@ -2,7 +2,7 @@
 #Include "Run as Administrator.ahk"
 
 	debugging := 0
-	;run_audio_repeater_when_headphones_are_connected()
+	run_audio_repeater_when_headphones_are_connected()
 	
 	/::/
 	
