@@ -61,7 +61,7 @@
 
 	~^s::Reload
 
-stremio_title := "Stremio - Freedom to Stream"
+stremio_title := "Stremio - ahk_exe stremio.exe"
 #HotIf WinExist(stremio_title)
 
 	$Media_Play_Pause::
