@@ -61,39 +61,50 @@
 
 	~^s::Reload
 
-#HotIf WinExist("Stremio - Freedom to Stream")
+stremio_title := "Stremio - Freedom to Stream"
+#HotIf WinExist(stremio_title)
 
 	$Media_Play_Pause::
 	{
-		SetTimer(single_press, -300)
-		double_press := A_ThisHotkey == A_PriorHotkey and A_TimeSincePriorHotkey < 300
-		if double_press
+		static key_presses := 0
+		if key_presses > 0
 		{
-			SetTimer(single_press, 0)
-			ControlClick , "Stremio - Freedom to Stream", , "MIDDLE"
-			ControlSend "{Space}", , "Stremio - Freedom to Stream ahk_exe stremio.exe"
+			key_presses++
+			return
 		}
+		key_presses := 1
+		SetTimer key_press, -400
 		
-		single_press()
+		key_press()
 		{
-			If WinActive("Stremio - Freedom to Stream")
-				Send "{Space}"
-			else
-				Send "{Media_Play_Pause}"
+			if key_presses = 1
+			{
+				If WinActive(stremio_title)
+					Send "{Space}"
+				else
+					Send "{Media_Play_Pause}"
+			}
+			else if key_presses = 2
+			{
+				ControlClick , stremio_title, , "MIDDLE"
+				ControlSend "{Space}", , stremio_title
+			}
+			key_presses := 0
 		}
 	}
 
-#HotIf WinExist("ahk_class PotPlayer64")
+potplayer_title := "ahk_class PotPlayer64"
+#HotIf WinExist(potplayer_title)
 	
 	^!+p::
 	{
-		ControlClick , "ahk_class PotPlayer64", , "MIDDLE"
-		ControlSend "{Media_Prev}", , "ahk_class PotPlayer64"
+		ControlClick , potplayer_title, , "MIDDLE"
+		ControlSend "{Media_Prev}", , potplayer_title
 	}
 	^!+n::
 	{
-		ControlClick , "ahk_class PotPlayer64", , "MIDDLE"
-		ControlSend "{Media_Next}", , "ahk_class PotPlayer64"
+		ControlClick , potplayer_title, , "MIDDLE"
+		ControlSend "{Media_Next}", , potplayer_title
 	}
 
 #HotIf WinActive("ahk_exe EXCEL.EXE")
