@@ -5,7 +5,9 @@ set_headphones_volume_same_as_virtual_cable_volume()
 	{
 		master_volume := SoundGetVolume()
 		SoundSetVolume(master_volume, , "Ακουστικά (ZV Headphones Stereo)")
+		SoundSetVolume(master_volume, , "Σετ Ακουστικών (ZV Headphones Hands-Free AG Audio)")
 		SoundSetVolume(master_volume, , "Ακουστικά (Evi Headphones Stereo)")
+		SoundSetVolume(master_volume, , "Σετ Ακουστικών (Evi Headphones Hands-Free AG Audio)")
 	}
 }
 
