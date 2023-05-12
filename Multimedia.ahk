@@ -1,6 +1,8 @@
 	
 ;------------------------------ Hotkeys ------------------------------
 	
+#HotIf
+	
 	$Media_Prev::
 	{
 		activate_window_under_mouse()
