@@ -5,13 +5,13 @@
 	
 	~LButton & WheelUp::
 	{
-		SoundSetVolume "+2"
+		SoundSetVolume "+1"
 		display_volume()
 	}
 
 	~LButton & WheelDown::
 	{
-		SoundSetVolume "-2"
+		SoundSetVolume "-1"
 		display_volume()
 	}
 	
@@ -36,8 +36,8 @@
 		static volume_gui
 		Try old_volume_gui := volume_gui
 		volume_gui := Gui("-Caption +AlwaysOnTop +Owner +LastFound", "Volume Gui ")
-		volume_gui.MarginX := 30
-		volume_gui.MarginY := 10
+		volume_gui.MarginX := 40
+		volume_gui.MarginY := 30
 		volume_gui.BackColor := "0"
 		WinSetTransColor("1 170")
 		volume_gui.SetFont("s100 Bold q5 cffffff")
