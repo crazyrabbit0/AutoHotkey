@@ -5,26 +5,26 @@
 	
 	~LButton & WheelUp::
 	{
-		SoundSetVolume "+5"
+		SoundSetVolume "+2"
 		display_volume()
 	}
 
 	~LButton & WheelDown::
 	{
-		SoundSetVolume "-5"
+		SoundSetVolume "-2"
 		display_volume()
 	}
 	
 	~RButton & WheelUp::
 	{
 		SoundSetMute false
-		display_volume("Unmuted")
+		display_volume()
 	}
 
 	~RButton & WheelDown::
 	{
 		SoundSetMute true
-		display_volume("Muted")
+		display_volume("")
 	}
 	
 ;------------------------------ Functions ------------------------------
@@ -32,17 +32,18 @@
 	display_volume(text?)
 	{
 		If Not IsSet(text)
-			text := Round(SoundGetVolume()) "%"
-		static id := 0
-		id++
-		volume_gui := Gui("-Caption +AlwaysOnTop +Owner +LastFound", "Volume Gui " id)
-		volume_gui.BackColor := "fff"
-		WinSetTransColor("fff")
-		volume_gui.SetFont("s60 Bold q5 c49b0fd")
-		volume_gui.Add("Text", , "Volume " text)
-		volume_gui.Show("NA")
-		SetTimer(() => volume_gui.Destroy(), -2000)
-		If WinExist("Volume Gui ahk_exe AutoHotkey64.exe", , id)
-			WinKill()
+			text := ((SoundGetMute() = True) ? "" : "") " " Round(SoundGetVolume())
+		static volume_gui
+		Try old_volume_gui := volume_gui
+		volume_gui := Gui("-Caption +AlwaysOnTop +Owner +LastFound", "Volume Gui ")
+		volume_gui.MarginX := 30
+		volume_gui.MarginY := 10
+		volume_gui.BackColor := "0"
+		WinSetTransColor("1 170")
+		volume_gui.SetFont("s100 Bold q5 cffffff")
+		volume_gui.Add("Text", , text)
+		volume_gui.Show("NA") ; "Y " 0)
+		SetTimer(() => volume_gui.Destroy(), -500)
+		Try old_volume_gui.Destroy()
 	}
 	
