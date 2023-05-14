@@ -21,14 +21,14 @@
 	
 	set_headphones_volume_same_as_virtual_cable_volume()
 	{
-		;If SoundGetName() == "Hi-Fi Cable Input (VB-Audio Hi-Fi Cable)"
-		;{
+		If SoundGetName() == "Hi-Fi Cable Input (VB-Audio Hi-Fi Cable)"
+		{
 			master_volume := SoundGetVolume()
 			SoundSetVolume(master_volume, , "Ακουστικά (ZV Headphones Stereo)")
 			SoundSetVolume(master_volume, , "Σετ Ακουστικών (ZV Headphones Hands-Free AG Audio)")
 			SoundSetVolume(master_volume, , "Ακουστικά (Evi Headphones Stereo)")
 			SoundSetVolume(master_volume, , "Σετ Ακουστικών (Evi Headphones Hands-Free AG Audio)")
-		;}
+		}
 	}
 	
 	run_audio_repeater_when_headphones_are_connected()
