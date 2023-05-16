@@ -43,7 +43,12 @@
 		volume_gui.SetFont("s100 Bold q5 cffffff")
 		volume_gui.Add("Text", , text)
 		volume_gui.Show("NA") ; "Y " 0)
-		SetTimer(() => Try volume_gui.Destroy(), -500)
+		SetTimer(() => try_to_destroy(volume_gui), -500)
 		Try old_volume_gui.Destroy()
+		
+		try_to_destroy(gui)
+		{
+			Try gui.Destroy()
+		}
 	}
 	
