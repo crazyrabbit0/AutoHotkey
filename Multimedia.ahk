@@ -1,5 +1,5 @@
 	
-;------------------------------ Hotkeys ------------------------------
+;############################## Hotkeys ##############################
 	
 #HotIf
 	
@@ -19,7 +19,7 @@
 	
 	^!+n::Send "{Shift down}n{Shift up}"
 	
-;------------------------------ Stremio ------------------------------
+;~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Stremio ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 	
 	stremio_title := "Stremio - ahk_exe stremio.exe"
 #HotIf WinExist(stremio_title)
@@ -53,7 +53,7 @@
 		}
 	}
 	
-;------------------------------ PotPlayer ------------------------------
+;~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ PotPlayer ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 	
 	potplayer_title := "ahk_class PotPlayer64"
 #HotIf WinExist(potplayer_title)
@@ -70,7 +70,7 @@
 		ControlSend "{Media_Next}", , potplayer_title
 	}
 	
-;------------------------------ Functions ------------------------------
+;############################## Functions ##############################
 	
 	activate_window_under_mouse()
 	{

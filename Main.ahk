@@ -1,14 +1,19 @@
 	
-	#SingleInstance Force
-	#Include "Run as Administrator.ahk"
-
-	debugging := 0
+;############################## Variables ##############################
 	
+	#SingleInstance Force
+	
+	debugging := 0
+	display_custom_volume := 1
+	
+;############################## Includes ##############################
+	
+	#Include "Run as Administrator.ahk"
 	#Include "Multimedia.ahk"
 	#Include "Headphones.ahk"
 	;#Include "Mouse Volume.ahk"
-
-;------------------------------ Hotkeys ------------------------------
+	
+;############################## Hotkeys ##############################
 
 #HotIf
 	
@@ -18,9 +23,9 @@
 	
 	>!/::Pause -1
 	
-#SuspendExempt True
+	#SuspendExempt True
 	>^>!/::Suspend
-#SuspendExempt False
+	#SuspendExempt False
 	
 	>^Numpad0::
 	{

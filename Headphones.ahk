@@ -1,23 +1,31 @@
 	
+;############################## Run ##############################
+	
 	run_audio_repeater_when_headphones_are_connected()
 	
-;------------------------------ Hotkeys ------------------------------
+;############################## Includes ##############################
+	
+	#Include "Custom Volume.ahk"
+	
+;############################## Hotkeys ##############################
 	
 #HotIf
 	
-	$Volume_Up::
+	Hotkey("$Volume_Up", increase_headphones_volume)
+	increase_headphones_volume(caller_hotkey)
 	{
-		Send "{Volume_Up}"
+		increase_volume()
 		set_headphones_volume_same_as_virtual_cable_volume()
 	}
 
-	$Volume_Down::
+	Hotkey("$Volume_Down", decrease_headphones_volume)
+	decrease_headphones_volume(caller_hotkey)
 	{
-		Send "{Volume_Down}"
+		decrease_volume()
 		set_headphones_volume_same_as_virtual_cable_volume()
 	}
 	
-;------------------------------ Functions ------------------------------
+;############################## Functions ##############################
 	
 	set_headphones_volume_same_as_virtual_cable_volume()
 	{
@@ -47,7 +55,7 @@
 			playback_device_is_hifi_cable := SoundGetName() == "Hi-Fi Cable Input (VB-Audio Hi-Fi Cable)"
 			Loop Reg audio_render_registry_key, "K"
 			{
-				if debugging
+				if IsSet(debugging) and debugging
 					MsgBox A_LoopRegKey . "`n" . A_LoopRegName . "`n" . A_LoopRegType
 				current_registry_key := A_LoopRegKey . "\" . A_LoopRegName
 				device_is_bluetooth := RegRead(current_registry_key . "\Properties", "{a45c254e-df1c-4efd-8020-67d146a850e0},24") == "BTHENUM"
@@ -60,7 +68,7 @@
 					WinClose("ahk_id " . audiorepeater_is_running)
 				if WinExist("Headphones ahk_exe " . audiorepeater_file) or not(headphones_are_connected and playback_device_is_hifi_cable) 
 					continue
-				if debugging
+				if IsSet(debugging) and debugging
 					MsgBox 'Audio Repeater on "' . headphones_name . '" is not running!  Starting...'
 				Run('"' . audiorepeater_path . '" /Input:"VB-Audio Hi-Fi Cable" /Output:"' . headphones_name . '" /OutputPrefill:70 /SamplingRate:44100 /Priority:"High" /WindowName:"' . headphones_name . '" /AutoStart', , "Hide")
 				set_headphones_volume_same_as_virtual_cable_volume()
