@@ -1,4 +1,8 @@
 	
+;############################## Run ##############################
+	
+	initialize_volume_gui()
+	
 ;############################## Hotkeys ##############################
 	
 #HotIf
@@ -20,36 +24,35 @@
 	
 ;############################## Functions ##############################
 	
-	display_volume(text?)
+	initialize_volume_gui()
 	{
-		If Not IsSet(text)
-			text := ((SoundGetMute() = True) ? "" : "") " " Round(SoundGetVolume())
-		static volume_gui
-		Try old_volume_gui := volume_gui
-		volume_gui := Gui("-Caption +AlwaysOnTop +Owner +LastFound", "Volume Gui ")
+		global volume_gui := Gui("-Caption +AlwaysOnTop +Owner +LastFound", "Volume Gui")
 		volume_gui.MarginX := 40
 		volume_gui.MarginY := 30
 		volume_gui.BackColor := "0"
-		WinSetTransColor("1 180")
+		WinSetTransColor("1 175")
 		volume_gui.SetFont("s100 Bold q5 cffffff")
-		volume_gui.Add("Text", , text)
-		volume_gui.Show("NA") ; "Y " 0)
-		SetTimer(() => try_to_destroy(volume_gui), -500)
-		Try old_volume_gui.Destroy()
-		
-		try_to_destroy(gui)
-		{
-			Try gui.Destroy()
-		}
+		volume_gui.Add("Text", "Center w350")
+	}
+	
+	show_volume(text?)
+	{
+		If Not IsSet(text)
+			text := ((SoundGetMute() = True) ? "" : "") " " Round(SoundGetVolume())
+		text_control := "Static1"
+		volume_gui[text_control].Text := text
+		If Not ControlGetVisible(text_control, "Volume Gui")
+			volume_gui.Show("NA AutoSize")
+		SetTimer(() => volume_gui.Hide(), -500)
 	}
 	
 	increase_volume()
 	{
 	
-		If IsSet(display_custom_volume) and display_custom_volume
+		If IsSet(use_custom_volume) and use_custom_volume
 		{
 			SoundSetVolume "+1"
-			display_volume()
+			show_volume()
 		}
 		Else
 			Send "{Volume_Up}"
@@ -58,10 +61,10 @@
 	decrease_volume()
 	{
 	
-		If IsSet(display_custom_volume) and display_custom_volume
+		If IsSet(use_custom_volume) and use_custom_volume
 		{
 			SoundSetVolume "-1"
-			display_volume()
+			show_volume()
 		}
 		Else
 			Send "{Volume_Down}"
@@ -70,17 +73,17 @@
 	mute_volume()
 	{
 	
-		If IsSet(display_custom_volume) and display_custom_volume
+		If IsSet(use_custom_volume) and use_custom_volume
 		{
 			If SoundGetMute()
 			{
 				SoundSetMute false
-				display_volume()
+				show_volume()
 			}
 			Else
 			{
 				SoundSetMute true
-				display_volume("")
+				show_volume("")
 			}
 		}
 		Else

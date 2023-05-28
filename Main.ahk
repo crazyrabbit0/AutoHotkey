@@ -4,7 +4,7 @@
 	#SingleInstance Force
 	
 	debugging := 0
-	display_custom_volume := 1
+	use_custom_volume := 1
 	
 ;############################## Includes ##############################
 	
