@@ -20,12 +20,12 @@
 	~RButton & WheelUp::
 	{
 		SoundSetMute false
-		display_volume()
+		show_volume()
 	}
 
 	~RButton & WheelDown::
 	{
 		SoundSetMute true
-		display_volume("")
+		show_volume("")
 	}
 	
