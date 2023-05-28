@@ -7,25 +7,11 @@
 
 #HotIf
 	
-	~LButton & WheelUp::
-	{
-		increase_volume()
-	}
+	~LButton & WheelUp::increase_volume()
 
-	~LButton & WheelDown::
-	{
-		decrease_volume()
-	}
+	~LButton & WheelDown::decrease_volume()
 	
-	~RButton & WheelUp::
-	{
-		SoundSetMute false
-		show_volume()
-	}
+	~RButton & WheelUp::unmute_volume()
 
-	~RButton & WheelDown::
-	{
-		SoundSetMute true
-		show_volume("")
-	}
+	~RButton & WheelDown::mute_volume()
 	

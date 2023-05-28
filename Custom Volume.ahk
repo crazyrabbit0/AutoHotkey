@@ -7,20 +7,11 @@
 	
 #HotIf
 	
-	$Volume_Up::
-	{
-		increase_volume()
-	}
+	$Volume_Up::increase_volume()
 
-	$Volume_Down::
-	{
-		decrease_volume()
-	}
+	$Volume_Down::decrease_volume()
 	
-	$Volume_Mute::
-	{
-		mute_volume()
-	}
+	$Volume_Mute::mute_toggle()
 	
 ;############################## Functions ##############################
 	
@@ -48,7 +39,6 @@
 	
 	increase_volume()
 	{
-	
 		If IsSet(use_custom_volume) and use_custom_volume
 		{
 			SoundSetVolume "+1"
@@ -60,7 +50,6 @@
 	
 	decrease_volume()
 	{
-	
 		If IsSet(use_custom_volume) and use_custom_volume
 		{
 			SoundSetVolume "-1"
@@ -72,21 +61,31 @@
 	
 	mute_volume()
 	{
-	
 		If IsSet(use_custom_volume) and use_custom_volume
 		{
-			If SoundGetMute()
-			{
-				SoundSetMute false
-				show_volume()
-			}
-			Else
-			{
-				SoundSetMute true
-				show_volume("")
-			}
+			SoundSetMute true
+			show_volume("")
 		}
 		Else
 			Send "{Volume_Mute}"
+	}
+	
+	unmute_volume()
+	{
+		If IsSet(use_custom_volume) and use_custom_volume
+		{
+			SoundSetMute false
+			show_volume()
+		}
+		Else
+			Send "{Volume_Mute}"
+	}
+	
+	mute_toggle()
+	{
+		If SoundGetMute()
+			unmute_volume()
+		Else
+			mute_volume()
 	}
 	
