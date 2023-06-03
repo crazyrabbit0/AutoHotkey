@@ -41,7 +41,7 @@
 	{
 		If IsSet(use_custom_volume) and use_custom_volume
 		{
-			SoundSetVolume "+1"
+			SoundSetVolume "+2"
 			show_volume()
 		}
 		Else
@@ -52,7 +52,7 @@
 	{
 		If IsSet(use_custom_volume) and use_custom_volume
 		{
-			SoundSetVolume "-1"
+			SoundSetVolume "-2"
 			show_volume()
 		}
 		Else
