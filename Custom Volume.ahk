@@ -23,7 +23,7 @@
 		volume_gui.BackColor := "0"
 		WinSetTransColor("1 175")
 		volume_gui.SetFont("s100 Bold q5 cffffff")
-		volume_gui.Add("Text", "Center w350")
+		volume_gui.Add("Text", "Center w400")
 	}
 	
 	show_volume(text?)
