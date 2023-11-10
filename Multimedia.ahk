@@ -15,6 +15,18 @@
 		Send "{Right}"
 	}
 	
+	^!+Left::
+	{
+		activate_window_under_mouse()
+		Send "{Shift down}{Left}{Shift up}"
+	}
+	
+	^!+Right::
+	{
+		activate_window_under_mouse()
+		Send "{Shift down}{Right}{Shift up}"
+	}
+	
 	^!+p::Send "{Shift down}p{Shift up}"
 	
 	^!+n::Send "{Shift down}n{Shift up}"
@@ -68,6 +80,21 @@
 	{
 		ControlClick , potplayer_title, , "MIDDLE"
 		ControlSend "{Media_Next}", , potplayer_title
+	}
+	
+;~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Youtube ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+	
+	youtube_title := " - YouTube - Google Chrome"
+#HotIf WinActive(youtube_title)
+	
+	^!+Left::
+	{
+		ControlSend "j", , youtube_title
+	}
+	
+	^!+Right::
+	{
+		ControlSend "l", , youtube_title
 	}
 	
 ;############################## Functions ##############################
