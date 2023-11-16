@@ -32,10 +32,14 @@
 		If SoundGetName() == "Hi-Fi Cable Input (VB-Audio Hi-Fi Cable)"
 		{
 			master_volume := SoundGetVolume()
-			SoundSetVolume(master_volume, , "Ακουστικά (ZV Headphones Stereo)")
-			SoundSetVolume(master_volume, , "Σετ Ακουστικών (ZV Headphones Hands-Free AG Audio)")
-			SoundSetVolume(master_volume, , "Ακουστικά (Evi Headphones Stereo)")
-			SoundSetVolume(master_volume, , "Σετ Ακουστικών (Evi Headphones Hands-Free AG Audio)")
+			try {
+				SoundSetVolume(master_volume, , "Ακουστικά (ZV Headphones Stereo)")
+				SoundSetVolume(master_volume, , "Σετ Ακουστικών (ZV Headphones Hands-Free AG Audio)")
+			}
+			try {
+				SoundSetVolume(master_volume, , "Ακουστικά (Evi Headphones Stereo)")
+				SoundSetVolume(master_volume, , "Σετ Ακουστικών (Evi Headphones Hands-Free AG Audio)")
+			}
 		}
 	}
 	
