@@ -53,10 +53,10 @@
 	
 	^+q::
 	{
-		Send "{Right}+{F10}n"
+		Send "{^+ up}{Right}+{F10}n"
 		Sleep 100
 		Send "^{Tab}!i{Enter}"
 	}
 	
-	^+w::Send "+{F10}{Down}{Down}{Enter}{Down}"
+	^+w::Send "{^+ up}+{F10}{Down}{Down}{Enter}{Down}"
 	
