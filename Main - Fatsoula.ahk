@@ -45,18 +45,22 @@
 		}
 	}
 	
+;~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Notepad++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
 #HotIf WinActive(".ahk - Notepad ahk_exe notepad++.exe") or WinActive(".ahk - Notepad ahk_exe notepad.exe")
 	
 	~^s::Reload
+	
+;~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Excel ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 	
 #HotIf WinActive("ahk_exe EXCEL.EXE")
 	
 	^+q::
 	{
-		Send "{Right}+{F10}n"
+		Send "{^ up}{+ up}{Right}+{F10}n"
 		Sleep 100
 		Send "^{Tab}!i{Enter}"
 	}
 	
-	^+w::Send "+{F10}{Down}{Down}{Enter}{Down}"
+	^+w::Send "{^ up}{+ up}+{F10}{Down}{Down}{Enter}{Down}"
 	

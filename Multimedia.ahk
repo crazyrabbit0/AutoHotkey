@@ -18,18 +18,18 @@
 	^!+Left::
 	{
 		activate_window_under_mouse()
-		Send "{^!+ up}+{Left}"
+		Send "{^ up}{! up}{+ up}+{Left}"
 	}
 	
 	^!+Right::
 	{
 		activate_window_under_mouse()
-		Send "{^!+ up}+{Right}"
+		Send "{^ up}{! up}{+ up}+{Right}"
 	}
 	
-	^!+p::Send "{^!+ up}+p"
+	^!+p::Send "{^ up}{! up}{+ up}+p"
 	
-	^!+n::Send "{^!+ up}+n"
+	^!+n::Send "{^ up}{! up}{+ up}+n"
 	
 ;~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Stremio ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 	
@@ -73,13 +73,13 @@
 	^!+p::
 	{
 		ControlClick , potplayer_title, , "MIDDLE"
-		ControlSend "{^!+ up}{Media_Prev}", , potplayer_title
+		ControlSend "{^ up}{! up}{+ up}{Media_Prev}", , potplayer_title
 	}
 	
 	^!+n::
 	{
 		ControlClick , potplayer_title, , "MIDDLE"
-		ControlSend "{^!+ up}{Media_Next}", , potplayer_title
+		ControlSend "{^ up}{! up}{+ up}{Media_Next}", , potplayer_title
 	}
 	
 ;~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Youtube ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -89,12 +89,12 @@
 	
 	^!+Left::
 	{
-		ControlSend "{^!+ up}j", , youtube_title
+		ControlSend "{^ up}{! up}{+ up}j", , youtube_title
 	}
 	
 	^!+Right::
 	{
-		ControlSend "{^!+ up}l", , youtube_title
+		ControlSend "{^ up}{! up}{+ up}l", , youtube_title
 	}
 	
 ;############################## Functions ##############################

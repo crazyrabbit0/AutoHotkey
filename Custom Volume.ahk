@@ -37,6 +37,8 @@
 		SetTimer(() => volume_gui.Hide(), -500)
 	}
 	
+;~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ +/- Volume ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+	
 	increase_volume()
 	{
 		If IsSet(use_custom_volume) and use_custom_volume
@@ -58,6 +60,8 @@
 		Else
 			Send "{Volume_Down}"
 	}
+	
+;~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Mute ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 	
 	mute_volume()
 	{
