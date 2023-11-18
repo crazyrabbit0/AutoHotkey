@@ -57,7 +57,7 @@
 	
 	^+q::
 	{
-		Send "{Ctrl up}{Shift up}+{F10}n"
+		Send "{Ctrl up}{Shift up}{Right}+{F10}n"
 		Sleep 100
 		Send "^{Tab}!i{Enter}"
 	}
