@@ -15,6 +15,8 @@
 	
 ;############################## Functions ##############################
 	
+	DetectHiddenWindows True
+	
 	initialize_volume_gui()
 	{
 		global volume_gui := Gui("-Caption +AlwaysOnTop +Owner +LastFound", "Volume Gui")
