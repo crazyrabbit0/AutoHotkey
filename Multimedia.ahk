@@ -31,6 +31,21 @@
 	
 	^!+n::Send "{Ctrl up}{Alt up}{Shift up}+n"
 	
+;~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Youtube ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+	
+	youtube_title := " - YouTube - Google Chrome"
+#HotIf WinActive(youtube_title)
+	
+	^!+Left::
+	{
+		ControlSend "{Ctrl up}{Alt up}{Shift up}jξ", , youtube_title
+	}
+	
+	^!+Right::
+	{
+		ControlSend "{Ctrl up}{Alt up}{Shift up}lλ", , youtube_title
+	}
+	
 ;~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Stremio ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 	
 	stremio_title := "Stremio - ahk_exe stremio.exe"
@@ -80,21 +95,6 @@
 	{
 		ControlClick , potplayer_title, , "MIDDLE"
 		ControlSend "{Ctrl up}{Alt up}{Shift up}{Media_Next}", , potplayer_title
-	}
-	
-;~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Youtube ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-	
-	youtube_title := " - YouTube - Google Chrome"
-#HotIf WinActive(youtube_title)
-	
-	^!+Left::
-	{
-		ControlSend "{Ctrl up}{Alt up}{Shift up}j", , youtube_title
-	}
-	
-	^!+Right::
-	{
-		ControlSend "{Ctrl up}{Alt up}{Shift up}l", , youtube_title
 	}
 	
 ;############################## Functions ##############################
