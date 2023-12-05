@@ -57,10 +57,10 @@
 	
 	^+q::
 	{
-		Send "{Ctrl up}{Shift up}{Right}+{F10}n"
+		Send "{Right}{Shift up}+{F10}n"
 		Sleep 100
-		Send "^{Tab}!i{Enter}"
+		Send "{Ctrl up}^{Tab}!i{Enter}"
 	}
 	
-	^+w::Send "{Ctrl up}{Shift up}+{F10}{Down}{Down}{Enter}{Down}"
+	^+w::Send "{Shift up}+{F10}{Down}{Down}{Enter}{Down}"
 	
