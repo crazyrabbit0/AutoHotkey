@@ -33,17 +33,17 @@
 	
 ;~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Youtube ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 	
-	youtube_title := " - YouTube - Google Chrome"
+	youtube_title := " - YouTube"
 #HotIf WinActive(youtube_title)
 	
 	^!+Left::
 	{
-		ControlSend "{Ctrl up}{Alt up}{Shift up}jξ", , youtube_title
+		ControlSend "{j}", , youtube_title
 	}
 	
 	^!+Right::
 	{
-		ControlSend "{Ctrl up}{Alt up}{Shift up}lλ", , youtube_title
+		ControlSend "{l}", , youtube_title
 	}
 	
 ;~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Stremio ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
