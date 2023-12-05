@@ -18,18 +18,18 @@
 	^!+Left::
 	{
 		activate_window_under_mouse()
-		Send "{Ctrl up}{Alt up}{Shift up}+{Left}"
+		Send "{Shift up}+{Left}"
 	}
 	
 	^!+Right::
 	{
 		activate_window_under_mouse()
-		Send "{Ctrl up}{Alt up}{Shift up}+{Right}"
+		Send "{Shift up}+{Right}"
 	}
 	
-	^!+p::Send "{Ctrl up}{Alt up}{Shift up}+p"
+	^!+p::Send "{Shift up}+p"
 	
-	^!+n::Send "{Ctrl up}{Alt up}{Shift up}+n"
+	^!+n::Send "{Shift up}+n"
 	
 ;~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Youtube ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 	
@@ -88,13 +88,13 @@
 	^!+p::
 	{
 		ControlClick , potplayer_title, , "MIDDLE"
-		ControlSend "{Ctrl up}{Alt up}{Shift up}{Media_Prev}", , potplayer_title
+		ControlSend "{Media_Prev}", , potplayer_title
 	}
 	
 	^!+n::
 	{
 		ControlClick , potplayer_title, , "MIDDLE"
-		ControlSend "{Ctrl up}{Alt up}{Shift up}{Media_Next}", , potplayer_title
+		ControlSend "{Media_Next}", , potplayer_title
 	}
 	
 ;############################## Functions ##############################
