@@ -1,24 +1,30 @@
 #NoTrayIcon
 #SingleInstance Ignore
 
-; Exclude from Windows Defender & Wait 1 Second
-RunWait '*RunAs "powershell.exe" "Add-MpPreference -ExclusionPath `'' . A_Temp . '`'"', , 'Hide'
-Sleep 500
+; Variables
+exclude_dir	:= A_Temp
+temp_patch	:= A_Temp . '\' . RegExReplace(A_ScriptName, 'i)\.ahk$', '.exe')
+original_dll	:= A_Temp . '\dup2patcher.dll'
+temp_dll	:= RegExReplace(temp_patch, 'i)\.exe$', '.dll')
 
-; Copy & Run temp patch
-temp_file := A_Temp . '\' . A_ScriptName
-temp_file := RegExReplace(temp_file, 'i)\.ahk$', '.exe')
-FileInstall 'patch.exe', temp_file, 1
-Run '"' . temp_file . '" /startupworkdir "' . A_WorkingDir . '"', , , &temp_process_pid
+; Exclude temp folder from Windows Defender & Wait till exclusion is registered
+RunWait '*RunAs "powershell.exe" "Add-MpPreference -ExclusionPath `'' . exclude_dir . '`'"', , 'Hide'
+Loop {
+	exclusion_exists := not(RunWait('*RunAs "powershell.exe" "(Get-MpPreference  | Select-Object -ExpandProperty ExclusionPath | Where-Object {$_ -eq `'' . exclude_dir . '`'})[0]"', , 'Hide'))
+} Until exclusion_exists
 
-; Wait for temp patch to open & rename associated dll
+; Move temp patch to temp folder & Run it
+FileInstall 'patch.exe', temp_patch, true
+Run '"' . temp_patch . '" /startupworkdir "' . A_WorkingDir . '"', , , &temp_process_pid
+
+; Wait for temp patch to open & Rename associated dll
 WinWait 'ahk_pid ' . temp_process_pid
-FileMove A_Temp . '\dup2patcher.dll', temp_file . '.dll'
+FileMove original_dll, temp_dll, true
 
-; Wait for temp patch to close & delete temp patch + associated dll
+; Wait for temp patch to close & Delete temp files
 WinWaitClose 'ahk_pid ' . temp_process_pid
-FileDelete temp_file 
-FileDelete temp_file . '.dll'
+FileDelete temp_patch 
+FileDelete temp_dll
 
-; Remove Windows Defender Exclusion
-RunWait '*RunAs "powershell.exe" "Remove-MpPreference -ExclusionPath `'' . A_Temp . '`'"', , 'Hide'
+; Remove Windows Defender exclusion
+RunWait '*RunAs "powershell.exe" "Remove-MpPreference -ExclusionPath `'' . exclude_dir . '`'"', , 'Hide'
