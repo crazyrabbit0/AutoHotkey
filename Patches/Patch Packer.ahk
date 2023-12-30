@@ -20,11 +20,11 @@ if A_Args.Length != 1 {
 ; Variables
 exclude_dir	:= A_Temp
 temp_dir	:= A_Temp . '\patch_packer_' . A_ScriptHwnd
-Ahk2Exe		:= temp_dir . '\Ahk2Exe.exe'
 AutoHotkey	:= temp_dir . '\AutoHotkey64.exe'
-Mpress		:= temp_dir . '\Mpress.exe'
 script		:= temp_dir . '\Patch Runner.ahk'
-icon		:= temp_dir . '\CrazyRabbit  (48x48).ico'
+Icon		:= temp_dir . '\Icon.ico'
+Ahk2Exe		:= temp_dir . '\Ahk2Exe.exe'
+Mpress		:= temp_dir . '\Mpress.exe'
 BinMod		:= temp_dir . '\BinMod.exe'
 ScriptGuard	:= temp_dir . '\ScriptGuard1.ahk'
 original_patch	:= A_Args[1]
@@ -40,17 +40,17 @@ Loop {
 } Until exclusion_exists
 
 ; Move files to temp folder
-FileInstall '..\Ahk2Exe.exe', Ahk2Exe, true
-FileInstall '..\AutoHotkey64.exe', AutoHotkey, true
-FileInstall '..\Mpress.exe', Mpress, true
+FileInstall '..\..\AutoHotkey64.exe', AutoHotkey, true
 FileInstall 'Patch Runner.ahk', script, true
-FileInstall '.icons\CrazyRabbit  (48x48).ico', icon, true
-FileInstall '..\BinMod.exe', BinMod, true
-FileInstall 'System\ScriptGuard1.ahk', ScriptGuard, true
+FileInstall '.Icon.ico', Icon, true
+FileInstall '..\..\Ahk2Exe\Ahk2Exe.exe', Ahk2Exe, true
+FileInstall '..\..\Ahk2Exe\Mpress.exe', Mpress, true
+FileInstall '..\..\Ahk2Exe\BinMod.exe', BinMod, true
+FileInstall '..\System\ScriptGuard1.ahk', ScriptGuard, true
 FileMove original_patch, temp_patch, true
 
 ; Compile patch runner
-RunWait '"' . Ahk2Exe . '" /in "' . script . '" /out "' . original_patch . '" /base "' . AutoHotkey . '" /icon "' . icon . '" /compress 1', , 'Hide'
+RunWait '"' . Ahk2Exe . '" /in "' . script . '" /out "' . original_patch . '" /base "' . AutoHotkey . '" /icon "' . Icon . '" /compress 1', , 'Hide'
 
 ; Delete temp folder
 DirDelete temp_dir, true
