@@ -27,7 +27,7 @@
 	>^>!/::Suspend
 	#SuspendExempt False
 	
-	>^Numpad0::
+	>^NumpadDot::
 	{
 		static toggle := 0
 		toggle := !toggle
@@ -39,7 +39,7 @@
 
 		press_ctrl_end_and_click()
 		{
-			Send "^{End}"
+			Send "{>^ up}^{End}"
 			Sleep 500
 			Send "{LButton}"
 		}
@@ -57,10 +57,10 @@
 	
 	^+q::
 	{
-		Send "{Right}{Shift up}+{F10}n"
+		Send "{^ up}{+ up}{Right}+{F10}n"
 		Sleep 100
-		Send "{Ctrl up}^{Tab}!i{Enter}"
+		Send "^{Tab}!i{Enter}"
 	}
 	
-	^+w::Send "{Shift up}+{F10}{Down}{Down}{Enter}{Down}"
+	^+w::Send "{^ up}{+ up}+{F10}{Down}{Down}{Enter}{Down}"
 	
