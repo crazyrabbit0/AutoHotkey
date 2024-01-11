@@ -39,7 +39,7 @@
 
 		press_ctrl_end_and_click()
 		{
-			Send "{>^ up}^{End}"
+			Send "{RCtrl up}^{End}"
 			Sleep 500
 			Send "{LButton}"
 		}
@@ -57,10 +57,10 @@
 	
 	^+q::
 	{
-		Send "{^ up}{+ up}{Right}+{F10}n"
+		Send "{Ctrl up}{Shift up}{Right}+{F10}n"
 		Sleep 100
 		Send "^{Tab}!i{Enter}"
 	}
 	
-	^+w::Send "{^ up}{+ up}+{F10}{Down}{Down}{Enter}{Down}"
+	^+w::Send "{Ctrl up}{Shift up}+{F10}{Down}{Down}{Enter}{Down}"
 	
