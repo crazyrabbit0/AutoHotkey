@@ -18,18 +18,18 @@
 	^!+Left::
 	{
 		activate_window_under_mouse()
-		Send "{^ up}{! up}{+ up}+{Left}"
+		Send "{Ctrl up}{Alt up}{Shift up}+{Left}"
 	}
 	
 	^!+Right::
 	{
 		activate_window_under_mouse()
-		Send "{^ up}{! up}{+ up}+{Right}"
+		Send "{Ctrl up}{Alt up}{Shift up}+{Right}"
 	}
 	
-	^!+p::Send "{^ up}{! up}{+ up}+p"
+	^!+p::Send "{Ctrl up}{Alt up}{Shift up}+p"
 	
-	^!+n::Send "{^ up}{! up}{+ up}+n"
+	^!+n::Send "{Ctrl up}{Alt up}{Shift up}+n"
 	
 ;~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Youtube ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 	
@@ -38,12 +38,12 @@
 	
 	^!+Left::
 	{
-		ControlSend "{^ up}{! up}{+ up}{j}", , youtube_title
+		ControlSend "{Ctrl up}{Alt up}{Shift up}{j}", , youtube_title
 	}
 	
 	^!+Right::
 	{
-		ControlSend "{^ up}{! up}{+ up}{l}", , youtube_title
+		ControlSend "{Ctrl up}{Alt up}{Shift up}{l}", , youtube_title
 	}
 	
 ;~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Stremio ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -88,13 +88,13 @@
 	^!+p::
 	{
 		ControlClick , potplayer_title, , "MIDDLE"
-		ControlSend "{^ up}{! up}{+ up}{Media_Prev}", , potplayer_title
+		ControlSend "{Ctrl up}{Alt up}{Shift up}{Media_Prev}", , potplayer_title
 	}
 	
 	^!+n::
 	{
 		ControlClick , potplayer_title, , "MIDDLE"
-		ControlSend "{^ up}{! up}{+ up}{Media_Next}", , potplayer_title
+		ControlSend "{Ctrl up}{Alt up}{Shift up}{Media_Next}", , potplayer_title
 	}
 	
 ;############################## Functions ##############################
