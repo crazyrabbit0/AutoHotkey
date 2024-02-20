@@ -27,6 +27,8 @@
 	>^>!/::Suspend
 	#SuspendExempt False
 	
+	^#b::Run 'ms-settings:bluetooth'
+	
 	>^NumpadDot::
 	{
 		static toggle := 0
