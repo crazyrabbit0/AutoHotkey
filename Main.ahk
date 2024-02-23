@@ -27,7 +27,12 @@
 	>^>!/::Suspend
 	#SuspendExempt False
 	
-	^#b::Run 'ms-settings:bluetooth'
+	^#b:: ; Run 'ms-settings:bluetooth'
+	{
+		Send "{Ctrl up}{LWin up}#a"
+		Sleep 1000
+		Send "{Right}{Tab}{Enter}"
+	}
 	
 	>^NumpadDot::
 	{
