@@ -12,6 +12,7 @@
 	#Include "Multimedia.ahk"
 	#Include "Headphones.ahk"
 	;#Include "Mouse Volume.ahk"
+    #Include "Text Case.ahk"
 	
 ;############################## Hotkeys ##############################
 
