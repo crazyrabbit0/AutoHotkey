@@ -13,6 +13,12 @@
 	#Include "Headphones.ahk"
 	;#Include "Mouse Volume.ahk"
     #Include "Text Case.ahk"
+    #Include "Prevent Idle.ahk"
+	
+;############################## Execute ##############################
+    
+    ;Prevent idle on workhours
+    prevent_idle(15 * 60 * 1000, '2-6', '9-17')
 	
 ;############################## Hotkeys ##############################
 
