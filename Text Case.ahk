@@ -10,10 +10,11 @@
     ^!2::set_case("lower")
 	
     ;Ctrl + Alt + 3:  Convert selected text to "UPPER CASE"
+    ^!3::set_case("upper")
     
 ;############################## Functions ##############################
 	
-	SetCase( text_Case )
+	set_case( text_Case )
     {
         if (!text_Case)
             return
