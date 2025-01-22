@@ -2,15 +2,14 @@
 ;############################## Hotkeys ##############################
 	
 #HotIf
-	
-    ;Ctrl + Alt + 1:  Convert selected text to "UPPER CASE"
-    ^!1::SetCase("upper")
+    
+    ;Ctrl + Alt + 1:  Convert selected text to "Title Case"
+    ^!1::set_case("title")
     
     ;Ctrl + Alt + 2:  Convert selected text to "lower case"
-    ^!2::SetCase("lower")
-    
-    ;Ctrl + Alt + 3:  Convert selected text to "Title Case"
-    ^!3::SetCase("title")
+    ^!2::set_case("lower")
+	
+    ;Ctrl + Alt + 3:  Convert selected text to "UPPER CASE"
     
 ;############################## Functions ##############################
 	
