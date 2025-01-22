@@ -1,7 +1,7 @@
 	
 ;############################## Functions ##############################
 	
-	SetBrightness( brightness := 50, timeout := 1 )
+	set_brightness( brightness := 50, timeout := 1 )
 	{
 		if ( brightness >= 0 && brightness <= 100 )
 		{
@@ -10,15 +10,15 @@
 		}
 		else if ( brightness > 100 )
 		{
-			SetBrightness(100)
+			set_brightness(100)
 		}
 		else if ( brightness < 0 )
 		{
-			SetBrightness(0)
+			set_brightness(0)
 		}
 	}
 
-	GetBrightness()
+	get_brightness()
 	{
 		For property in ComObjGet( "winmgmts:\\.\root\WMI" ).ExecQuery( "SELECT * FROM WmiMonitorBrightness" )
 			currentBrightness := property.CurrentBrightness	
