@@ -74,7 +74,7 @@
 					continue
 				if IsSet(debugging) and debugging
 					MsgBox 'Audio Repeater on "' . headphones_name . '" is not running!  Starting...'
-				Run('"' . audiorepeater_path . '" /Input:"VB-Audio Hi-Fi Cable" /Output:"' . headphones_name . '" /OutputPrefill:70 /SamplingRate:44100 /Priority:"High" /WindowName:"' . headphones_name . '" /AutoStart', , "Hide")
+				Run('"' . audiorepeater_path . '" /Input:"VB-Audio Hi-Fi Cable" /Output:"' . headphones_name . '" /OutputPrefill:70 /SamplingRate:44100 /Priority:"High" /WindowName:"' . headphones_name . '" /AutoStart', , "Min")
 				set_headphones_volume_same_as_virtual_cable_volume()
 			}
 		}
