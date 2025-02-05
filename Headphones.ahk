@@ -70,7 +70,7 @@
 				audiorepeater_is_running := WinExist(headphones_name . " ahk_exe " . audiorepeater_file)
 				if audiorepeater_is_running and not(headphones_are_connected and playback_device_is_hifi_cable)
 					WinClose("ahk_id " . audiorepeater_is_running)
-				if WinExist("Headphones ahk_exe " . audiorepeater_file) or not(headphones_are_connected and playback_device_is_hifi_cable) 
+				if audiorepeater_is_running or not(headphones_are_connected and playback_device_is_hifi_cable) 
 					continue
 				if IsSet(debugging) and debugging
 					MsgBox 'Audio Repeater on "' . headphones_name . '" is not running!  Starting...'
