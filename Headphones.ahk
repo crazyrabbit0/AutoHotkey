@@ -33,12 +33,12 @@
 		{
 			master_volume := SoundGetVolume()
 			try {
-				SoundSetVolume(master_volume, , "Ακουστικά (ZV Headphones Stereo)")
-				SoundSetVolume(master_volume, , "Σετ Ακουστικών (ZV Headphones Hands-Free AG Audio)")
+				SoundSetVolume(master_volume, , "Earphones Short")
+				SoundSetVolume(master_volume, , "Earphones Short Hands-Free")
 			}
 			try {
-				SoundSetVolume(master_volume, , "Ακουστικά (Evi Headphones Stereo)")
-				SoundSetVolume(master_volume, , "Σετ Ακουστικών (Evi Headphones Hands-Free AG Audio)")
+				SoundSetVolume(master_volume, , "Earphones Long")
+				SoundSetVolume(master_volume, , "Earphones Long Hands-Free")
 			}
 		}
 	}
