@@ -10,7 +10,7 @@
 	
 	#Include "Run as Administrator.ahk"
 	#Include "Multimedia.ahk"
-	#Include "Headphones.ahk"
+	;#Include "Headphones.ahk"
 	;#Include "Mouse Volume.ahk"
     #Include "Text Case.ahk"
     #Include "Prevent Idle.ahk"
