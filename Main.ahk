@@ -37,7 +37,7 @@
 	^#b:: ; Run 'ms-settings:bluetooth'
 	{
 		Send "{Blind}{Ctrl up}{LWin up}#a"
-		Sleep 100
+		Sleep 1000
 		Send "{Right}{Tab}{Enter}"
 	}
 	
