@@ -73,6 +73,7 @@
             }
             else if key_presses = 2
             {
+                ControlClick , stremio_title, , "Middle"
                 ControlSend "{Space}", "Stremio", stremio_title
             }
             key_presses := 0
@@ -86,11 +87,13 @@
 
     ^!+p::
     {
+        ControlClick , potplayer_title, , "Middle"
         ControlSend "{Ctrl up}{Alt up}{Shift up}{Media_Prev}", , potplayer_title
     }
 
     ^!+n::
     {
+        ControlClick , potplayer_title, , "Middle"
         ControlSend "{Ctrl up}{Alt up}{Shift up}{Media_Next}", , potplayer_title
     }
 
