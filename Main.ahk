@@ -2,7 +2,6 @@
 ;############################## Variables ##############################
 
     #SingleInstance Force
-       ProcessSetPriority "High"
 
     debugging := 0
     use_custom_volume := 1
