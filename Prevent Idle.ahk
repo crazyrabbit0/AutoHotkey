@@ -1,33 +1,26 @@
-    
+
 ;############################## Functions ##############################
-	
-	prevent_idle(idle_time := 15 * 60 * 1000, days := '1-7', hours := '0-23')
-    {
-        timer_time := idle_time / 3
-        
-        days := StrSplit(days, '-')
-        if !days.Has(2)
-            days.Push(7)
-        ;MsgBox days[1] ' ' days[2]
-        is_in_days := A_WDay >= days[1] && A_WDay <= days[2]
-        
-        hours := StrSplit(hours, '-')
-        if !hours.Has(2)
-            hours.Push(23)
-        ;MsgBox hours[1] ' ' hours[2]
-        is_in_hours := A_Hour >= hours[1] && A_Hour <= hours[2]
-        
-        timer_loop()
-        {   
-            is_idle := A_TimeIdle > idle_time
-            
-            if is_idle && is_in_days && is_in_hours
-            {
-                ;MsgBox is_idle ' ' is_in_days ' ' is_in_hours
-                Send "{Blind}{vkE8}" ;Send an unassigned virtual key (vkE8)
-            }
-        }
-        
-        SetTimer(timer_loop, timer_time)
-    }
-    
+
+	prevent_idle(idle_time := 6 * 60 * 1000, days := '1-7', hours := '0-23')
+  {
+      timer_time := idle_time // 3        ; // not / — a float period can throw TypeError
+      d := StrSplit(days, '-')
+      if !d.Has(2)
+          d.Push(7)
+      h := StrSplit(hours, '-')
+      if !h.Has(2)
+          h.Push(23)
+      d1 := Integer(d[1]), d2 := Integer(d[2])
+      h1 := Integer(h[1]), h2 := Integer(h[2])
+      timer_loop()
+      {
+          wd := A_WDay, hr := Integer(A_Hour)      ; re-read every tick
+          ; wrap-aware: '6-2' = Fri..Mon, '22-6' = 22:00..06:59
+          ok_day  := (d1 <= d2) ? (wd >= d1 && wd <= d2) : (wd >= d1 || wd <= d2)
+          ok_hour := (h1 <= h2) ? (hr >= h1 && hr <= h2) : (hr >= h1 || hr <= h2)
+          if ok_day && ok_hour && A_TimeIdle > idle_time
+              Send '{Blind}{vkE8}'
+      }
+      SetTimer(timer_loop, timer_time)
+      return timer_loop    ; SetTimer(f, 0) to stop, SetTimer(f, timer_time) to resume
+  }
