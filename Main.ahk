@@ -67,6 +67,19 @@
         }
     }
 
+    ; Middle-Click hold -> Send to -> Location open
+    *MButton:: {
+        if KeyWait("MButton", "T0.2") {   ; released within 0.x secs -> normal middle click
+            Click "Middle"
+            return
+        }
+        Click "Right"                     ; held -> open context menu at cursor
+        Sleep 150
+        Send "n"                          ; "Send to"
+        Sleep 150
+        Send "l"                          ; first letter of shortcut
+    }
+
 ;~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Notepad++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 #HotIf WinActive(".ahk - Notepad ahk_exe notepad++.exe") or WinActive(".ahk - Notepad ahk_exe notepad.exe")
