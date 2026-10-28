@@ -67,16 +67,23 @@
         }
     }
 
-    ; Middle-Click hold -> Send to -> Location open
-    *MButton:: {
-        if KeyWait("MButton", "T0.2") {   ; released within 0.x secs -> normal middle click
-            Click "Middle"
+    ; Double right-click -> Send to -> Location open
+    RButton:: {
+        if !KeyWait("RButton", "T0.3") {  ; held -> pass through as a normal hold/drag
+            Send "{RButton down}"
+            KeyWait "RButton"
+            Send "{RButton up}"
             return
         }
-        Click "Right"                     ; held -> open context menu at cursor
-        Sleep 150
+        if !KeyWait("RButton", "D T0.25") {  ; no second click within 0.x secs -> normal right click
+            Click "Right"
+            return
+        }
+        KeyWait "RButton"
+        Click "Right"                     ; double -> open context menu at cursor
+        Sleep 400
         Send "n"                          ; "Send to"
-        Sleep 150
+        Sleep 200
         Send "l"                          ; first letter of shortcut
     }
 
