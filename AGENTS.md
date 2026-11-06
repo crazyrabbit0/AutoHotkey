@@ -25,3 +25,5 @@ Personal AutoHotkey **v2** scripts for Windows, public on GitHub (`crazyrabbit0/
 ## Commits
 
 Conventional Commits with a module scope, e.g. `feat(mouse): ...`, `fix(multimedia): ...`, `docs: ...`. Update the README table when a script is added, removed or changes purpose. Files are LF (`.gitattributes`).
+
+Contributor-facing rules live in `CONTRIBUTING.md` and `.github/pull_request_template.md`; keep them in step with this file.
