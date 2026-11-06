@@ -1,0 +1,43 @@
+name: Bug report
+description: A script does not work as expected
+labels: [bug]
+assignees: [crazyrabbit0]
+body:
+  - type: dropdown
+    id: script
+    attributes:
+      label: Script
+      options:
+        - 'Brightness.ahk'
+        - 'Custom Volume.ahk'
+        - 'Games/Darksiders III.ahk'
+        - 'Games/Lost In Random.ahk'
+        - 'Headphones.ahk'
+        - 'Main - Fatsoula.ahk'
+        - 'Main.ahk'
+        - 'Mouse Volume.ahk'
+        - 'Multimedia.ahk'
+        - 'Patches/Patch Packer.ahk'
+        - 'Patches/Patch Runner.ahk'
+        - 'Prevent Idle.ahk'
+        - 'Run as Administrator.ahk'
+        - 'System/Process List.ahk'
+        - 'System/ScriptGuard1.ahk'
+        - 'System/Sound Components.ahk'
+        - 'Text Case.ahk'
+    validations:
+      required: true
+  - type: input
+    id: environment
+    attributes:
+      label: Windows version and AutoHotkey version
+      placeholder: Windows 11 24H2, AutoHotkey 2.0.19
+    validations:
+      required: true
+  - type: textarea
+    id: description
+    attributes:
+      label: What happens, and what did you expect?
+      description: Include the steps to reproduce and any error message.
+    validations:
+      required: true
