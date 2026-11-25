@@ -75,19 +75,19 @@
 
     ; Double right-click -> Send to -> Location open
     RButton:: {
-        if !KeyWait("RButton", "T0.3") {  ; held -> pass through as a normal hold/drag
+        if !KeyWait("RButton", "T0.2") {  ; held -> pass through as a normal hold/drag
             Send "{RButton down}"
             KeyWait "RButton"
             Send "{RButton up}"
             return
         }
-        if !KeyWait("RButton", "D T0.25") {  ; no second click within 0.x secs -> normal right click
+        if !KeyWait("RButton", "D T0.1") {  ; no second click within 0.x secs -> normal right click
             Click "Right"
             return
         }
         KeyWait "RButton"
         Click "Right"                     ; double -> open context menu at cursor
-        Sleep 400
+        Sleep 600
         Send "n"                          ; "Send to"
         Sleep 200
         Send "l"                          ; first letter of shortcut
