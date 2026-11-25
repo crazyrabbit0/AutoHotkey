@@ -6,6 +6,12 @@
     debugging := 0
     use_custom_volume := 1
 
+;############################## Taskbar ##############################
+
+    ; Logon task starts before Explorer tray - Missing tray icon
+    if WinWait("ahk_class Shell_TrayWnd", , 60)
+        Sleep 2000
+
 ;############################## Includes ##############################
 
     #Include "Run as Administrator.ahk"
