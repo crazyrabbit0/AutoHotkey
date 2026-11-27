@@ -8,9 +8,13 @@
 
 ;############################## Taskbar ##############################
 
-    ; Logon task starts before Explorer tray - Missing tray icon
+    ; Tray icon is added at load, before this runs; re-add it once the logon taskbar is ready
     if WinWait("ahk_class Shell_TrayWnd", , 60)
-        Sleep 2000
+    {
+        Sleep 3000
+        A_IconHidden := true
+        A_IconHidden := false
+    }
 
 ;############################## Includes ##############################
 
